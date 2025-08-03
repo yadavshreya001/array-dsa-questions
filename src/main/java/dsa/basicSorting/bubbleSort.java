@@ -25,7 +25,7 @@ public class bubbleSort {
 
 /*
         // Outer loop for number of passes (should usually run n-1 times)
-        for(int k = 1; k <= n-1 ; k++){
+        for(int k = 0; k < n-1 ; k++){
             // Inner loop for comparing adjacent elements in the current pass
             for (int i = 0; i < n - 1; i++) {
                 // If the left element is greater, swap with the right
