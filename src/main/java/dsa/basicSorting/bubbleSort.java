@@ -1,7 +1,7 @@
 package dsa.basicSorting;
 
 public class bubbleSort {
-    // Utility function to print all elements in array
+    // Utility function to print all elements in the array
     public static void print(int[] arr) {
         for (int ele : arr) {
             System.out.print(ele + " ");
@@ -47,7 +47,7 @@ public class bubbleSort {
                                  = n(n - 1)/2
 
             Time Complexity = O(n²) (but reduced compared to the naive version)
-            Space Complexity = O(n)   , Auxiliary Space = O(1)
+            Space Complexity = O(1)
           */
 
         /*Idea:
@@ -58,7 +58,7 @@ public class bubbleSort {
 
         // Outer loop to control the number of passes through the array
         // We need (n-1) passes for n elements to sort completely
-        for(int k = 0; k < n-1 ; k++){
+   /*     for(int k = 0; k < n-1 ; k++){
             // Inner loop to compare adjacent elements
             // After each pass, the largest element settles at the end,
             // so we can reduce the comparison range by 'k'
@@ -74,11 +74,37 @@ public class bubbleSort {
         // After all passes, the array is sorted in ascending order
         print(arr); // Print the sorted array
 
+    */
 
+        // Method 3: Bubble Sort - Optimized Version (Reduced Comparisons with Early Exit)
+
+        for(int k = 0; k < n-1 ; k++){
+
+            // Initialize the flag to true at the start of each pass
+            // It helps detect whether the array is already sorted
+            boolean flag = true;
+
+            // Inner loop to compare adjacent elements
+            // Range reduces after each pass, since last k elements are already sorted
+            for (int i = 0; i < n - 1 -  k; i++) {
+                // If the current element is greater than the next, swap them
+                if (arr[i] > arr[i + 1]) {
+                    // Swap arr[i] and arr[i + 1]
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    // Since a swap occurred, the array wasn't sorted — set the flag to false
+                    flag = false;
+                }
+            }
+            // If no swaps happened in the inner loop, the array is sorted — exit early
+            if(flag == true){
+                break;
+            }
         }
-
-
+        print(arr);   // Print the sorted array
     }
+}
 
 
 
